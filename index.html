@@ -3,7 +3,110 @@
     <title>Html-Qrcode Demo</title>
 <body>
     <div id="qr-reader" style="width:500px"></div>
-    <div id="qr-reader-results">test2</div>
+    <div id="qr-reader-results"></div>
+    <hr>
+    <div>
+        <div>
+            <span>末六碼：</span><input id="check_qr_1" type="number" />
+            <span>數量：</span><input id="check_num_1" type="number" />
+        </div>
+        <br>
+        <div>
+            <span>末六碼：</span><input id="check_qr_2" type="number" />
+            <span>數量：</span><input id="check_num_2" type="number" />
+        </div>
+        <br>
+        <div>
+            <span>末六碼：</span><input id="check_qr_3" type="number" />
+            <span>數量：</span><input id="check_num_3" type="number" />
+        </div>
+        <br>
+        <div>
+            <span>末六碼：</span><input id="check_qr_4" type="number" />
+            <span>數量：</span><input id="check_num_4" type="number" />
+        </div>
+        <br>
+        <div>
+            <span>末六碼：</span><input id="check_qr_5" type="number" />
+            <span>數量：</span><input id="check_num_5" type="number" />
+        </div>
+        <br>
+        <div>
+            <span>末六碼：</span><input id="check_qr_6" type="number" />
+            <span>數量：</span><input id="check_num_6" type="number" />
+        </div>
+        <br>
+        <div>
+            <span>末六碼：</span><input id="check_qr_7" type="number" />
+            <span>數量：</span><input id="check_num_7" type="number" />
+        </div>
+        <br>
+        <div>
+            <span>末六碼：</span><input id="check_qr_8" type="number" />
+            <span>數量：</span><input id="check_num_8" type="number" />
+        </div>
+        <br>
+        <div>
+            <span>末六碼：</span><input id="check_qr_9" type="number" />
+            <span>數量：</span><input id="check_num_9" type="number" />
+        </div>
+        <br>
+        <div>
+            <span>末六碼：</span><input id="check_qr_10" type="number" />
+            <span>數量：</span><input id="check_num_10" type="number" />
+        </div>
+        <br>
+        <div>
+            <span>末六碼：</span><input id="check_qr_11" type="number" />
+            <span>數量：</span><input id="check_num_11" type="number" />
+        </div>
+        <br>
+        <div>
+            <span>末六碼：</span><input id="check_qr_12" type="number" />
+            <span>數量：</span><input id="check_num_12" type="number" />
+        </div>
+        <br>
+        <div>
+            <span>末六碼：</span><input id="check_qr_13" type="number" />
+            <span>數量：</span><input id="check_num_13" type="number" />
+        </div>
+        <br>
+        <div>
+            <span>末六碼：</span><input id="check_qr_14" type="number" />
+            <span>數量：</span><input id="check_num_14" type="number" />
+        </div>
+        <br>
+        <div>
+            <span>末六碼：</span><input id="check_qr_15" type="number" />
+            <span>數量：</span><input id="check_num_15" type="number" />
+        </div>
+        <br>
+        <div>
+            <span>末六碼：</span><input id="check_qr_16" type="number" />
+            <span>數量：</span><input id="check_num_16" type="number" />
+        </div>
+        <br>
+        <div>
+            <span>末六碼：</span><input id="check_qr_17" type="number" />
+            <span>數量：</span><input id="check_num_17" type="number" />
+        </div>
+        <br>
+        <div>
+            <span>末六碼：</span><input id="check_qr_18" type="number" />
+            <span>數量：</span><input id="check_num_18" type="number" />
+        </div>
+        <br>
+        <div>
+            <span>末六碼：</span><input id="check_qr_19" type="number" />
+            <span>數量：</span><input id="check_num_19" type="number" />
+        </div>
+        <br>
+        <div>
+            <span>末六碼：</span><input id="check_qr_20" type="number" />
+            <span>數量：</span><input id="check_num_20" type="number" />
+        </div>
+        <br>
+    </div>
 </body>
 <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
 <script>
@@ -28,6 +131,7 @@
                 // Handle on success condition with the decoded message.
                 console.log(`Scan result ${decodedText}`, decodedResult);
                 resultContainer.innerHTML = decodedResult + "：" + decodedText;
+                
             }
         }
 
