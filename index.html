@@ -3,7 +3,7 @@
     <title>Html-Qrcode Demo</title>
 <body>
     <div id="qr-reader" style="width:500px"></div>
-    <div id="qr-reader-results">test</div>
+    <div id="qr-reader-results">test2</div>
 </body>
 <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
 <script>
@@ -27,7 +27,7 @@
                 lastResult = decodedText;
                 // Handle on success condition with the decoded message.
                 console.log(`Scan result ${decodedText}`, decodedResult);
-                resultContainer.innerHTML = decodedResult;
+                resultContainer.innerHTML = decodedResult + "：" + decodedText;
             }
         }
 
