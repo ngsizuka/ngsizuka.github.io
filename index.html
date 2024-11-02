@@ -3,6 +3,8 @@
     <title>Html-Qrcode Demo</title>
 <body>
     <div id="qr-reader" style="width:500px"></div>
+    <span>總長度：</span><input id="qr-all-length" value="13" />
+    <span>判斷末N碼：</span><input id="qr-check-length" value="6" />
     <div id="qr-reader-results"></div>
     <hr>
     <div>
@@ -130,8 +132,14 @@
                 lastResult = decodedText;
                 // Handle on success condition with the decoded message.
                 console.log(`Scan result ${decodedText}`, decodedResult);
-                resultContainer.innerHTML = decodedResult + "：" + decodedText;
-                
+                resultContainer.innerHTML = "當前條碼：" + decodedText;
+                if($("#qr-all-length").value.length === decodedText.length) {
+                    //只判斷末N碼
+                    
+                }
+                else {
+                    alert("條碼總長度不對");
+                }
             }
         }
 
