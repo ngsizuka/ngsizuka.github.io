@@ -3,7 +3,7 @@
     <title>Html-Qrcode Demo</title>
 <body>
     <div id="qr-reader" style="width:250px"></div>
-    <span>手動CHECK：</span><input id="key-check" />
+    <span>1手動CHECK：</span><input id="key-check" />
     <br>
     <!--span>總長度：</span><input id="qr-all-length" value="13" type="tel" /-->
     <span>判斷末N碼：</span><input id="qr-check-length" value="6" type="tel" />
@@ -115,6 +115,18 @@
 </body>
 <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
 <script>
+    function docReady(fn) {
+        // see if DOM is already available
+        if (document.readyState === "complete"
+            || document.readyState === "interactive") {
+            // call on next available tick
+            setTimeout(fn, 1);
+        } else {
+            document.addEventListener("DOMContentLoaded", fn);
+        }
+    }
+
+    docReady(function () {
     function goCheck(decodedText) {
         result.innerHTML = ("goCheck!");
         //檢查條碼
@@ -143,22 +155,9 @@
                 }
     }
     
-    function docReady(fn) {
-        // see if DOM is already available
-        if (document.readyState === "complete"
-            || document.readyState === "interactive") {
-            // call on next available tick
-            setTimeout(fn, 1);
-        } else {
-            document.addEventListener("DOMContentLoaded", fn);
-        }
-    }
-
-    docReady(function () {
         // Get the input field
         var input = document.getElementById("key-check");
         input.addEventListener("keypress", function(event) {
-          // If the user presses the "Enter" key on the keyboard
           if (event.key === "Enter") {
             goCheck(input.value);
           }
