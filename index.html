@@ -3,7 +3,7 @@
     <title>Html-Qrcode Demo</title>
 <body>
     <div id="qr-reader" style="width:250px"></div>
-    <!--span>總長度：</span><input id="qr-all-length" value="13" type="tel" /-->
+    <span>總長度：</span><input id="qr-all-length" value="13" type="tel" />
     <span>判斷末N碼：</span><input id="qr-check-length" value="6" type="tel" />
     <div id="qr-reader-results"></div>
     <hr>
@@ -113,10 +113,10 @@
 <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
 <script>
     function CheckCode(checkQrCode) {
+        resultContainer.innerHTML =("checkQrCode："+checkQrCode)
         //let qrAllLength = $("#qr-all-length").value;
         let qrMinLength = $("#qr-check-length").value;
         resultContainer.innerHTML =("qrMinLength："+qrMinLength)
-        resultContainer.innerHTML =("checkQrCode："+checkQrCode)
         //if(checkQrCode.length === qrAllLength)
         //{
             let checkQrMin = checkQrCode.substring(checkQrCode.length-qrMinLength, qrAllLength);
@@ -164,6 +164,7 @@
                 console.log(`Scan result ${decodedText}`, decodedResult);
                 resultContainer.innerHTML = "當前條碼：" + decodedText;
                 CheckCode(decodedText); 
+        resultContainer.innerHTML =("CheckCode")
             }
         }
 
