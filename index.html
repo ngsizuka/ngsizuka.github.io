@@ -3,7 +3,7 @@
     <title>Html-Qrcode Demo</title>
 <body>
     <div id="qr-reader" style="width:250px"></div>
-    <!--span>總長度：</span><input id="qr-all-length" value="13" type="tel" /-->
+    <span>總長度：</span><input id="qr-all-length" value="13" type="tel" />
     <span>判斷末N碼：</span><input id="qr-check-length" value="6" type="tel" />
     <div id="qr-reader-results"></div>
     <hr>
@@ -157,15 +157,35 @@
         var resultContainer = document.getElementById('qr-reader-results');
         var lastResult, countResults = 0;
         function onScanSuccess(decodedText, decodedResult) {
-            if (decodedText !== lastResult) {
-                ++countResults;
-                lastResult = decodedText;
+            //if (decodedText !== lastResult) {
+                //++countResults;
+                //lastResult = decodedText;
                 // Handle on success condition with the decoded message.
                 console.log(`Scan result ${decodedText}`, decodedResult);
                 resultContainer.innerHTML = "當前條碼：" + decodedText;
+
+            let qrMinLength = $("#qr-check-length").value;
+            let checkQrMin = checkQrCode.substring(checkQrCode.length-qrMinLength, qrAllLength);
+                resultContainer.innerHTML = "checkQrMin：" + checkQrMin;
+            let qrcode = "";
+            let prodCount = 0;
+            for(let i = 1; i <= 20; i++){
+                qrcode = $("#check_qr_" + i).value;
+                prodCount = parseInt($("#check_num_" + i).value);
+        resultContainer.innerHTML = ("qrcode："+qrcode)
+        resultContainer.innerHTML = ("prodCount："+prodCount)
+                //if(qrcode.length === qrMinLength && prodCount > 0 && checkQrMin === qrcode)
+                if(prodCount > 0 && checkQrMin === qrcode)
+                {
+                    $("#check_num_" + i).value = prodCount-1;
+                    alert("GET!");
+                    break;
+                }
+            }
+            
                 CheckCode(decodedText); 
         resultContainer.innerHTML =("CheckCode")
-            }
+            //}
         }
 
         var html5QrcodeScanner = new Html5QrcodeScanner(
