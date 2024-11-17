@@ -3,7 +3,7 @@
     <title>Html-Qrcode Demo</title>
 <body>
     <div id="qr-reader" style="width:250px"></div>
-    <span>總長度：</span><input id="qr-all-length" value="13" type="tel" />
+    <!--span>總長度：</span><input id="qr-all-length" value="13" type="tel" /-->
     <span>判斷末N碼：</span><input id="qr-check-length" value="6" type="tel" />
     <div id="qr-reader-results"></div>
     <hr>
@@ -113,30 +113,32 @@
 <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
 <script>
     function CheckCode(checkQrCode) {
-        let qrAllLength = $("#qr-all-length").value;
+        //let qrAllLength = $("#qr-all-length").value;
         let qrMinLength = $("#qr-check-length").value;
-        alert(checkQrCode.length+":"+qrAllLength)
-        if(checkQrCode.length === qrAllLength)
-        {
-            let checkQrMin = checkQrCode.substring(qrAllLength-qrMinLength, qrAllLength);
-            
-        alert(checkQrMin)
+        alert("qrMinLength："+qrMinLength)
+        alert("checkQrCode："+checkQrCode)
+        //if(checkQrCode.length === qrAllLength)
+        //{
+            //let checkQrMin = checkQrCode.substring(qrAllLength-qrMinLength, qrAllLength);
             let qrcode = "";
             let prodCount = 0;
             for(let i = 1; i <= 20; i++){
                 qrcode = $("#check_qr_" + i).value;
                 prodCount = parseInt($("#check_num_" + i).value);
-                if(qrcode.length === qrMinLength && prodCount > 0 && checkQrMin === qrcode)
+        alert("qrcode："+qrcode)
+        alert("prodCount："+prodCount)
+                //if(qrcode.length === qrMinLength && prodCount > 0 && checkQrMin === qrcode)
+                if(prodCount > 0 && checkQrMin === qrcode)
                 {
                     $("#check_num_" + i).value = prodCount-1;
                     alert("GET!");
                     break;
                 }
             }
-        }
-        else{
-            alert("總長度不對");
-        }
+        //}
+        //else{
+            //alert("總長度不對");
+        //}
     }
     
     function docReady(fn) {
