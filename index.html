@@ -115,9 +115,12 @@
     function CheckCode(checkQrCode) {
         let qrAllLength = $("#qr-all-length").value;
         let qrMinLength = $("#qr-check-length").value;
+        alert(checkQrCode.length+":"+qrAllLength)
         if(checkQrCode.length === qrAllLength)
         {
             let checkQrMin = checkQrCode.substring(qrAllLength-qrMinLength, qrAllLength);
+            
+        alert(checkQrMin)
             let qrcode = "";
             let prodCount = 0;
             for(let i = 1; i <= 20; i++){
