@@ -3,7 +3,7 @@
     <title>Html-Qrcode Demo</title>
 <body>
     <div id="qr-reader" style="width:250px"></div>
-    <span>1手動CHECK：</span><input id="key-check" />
+    <span>手動CHECK：</span><input id="key-check" />
     <br>
     <!--span>總長度：</span><input id="qr-all-length" value="13" type="tel" /-->
     <span>判斷末N碼：</span><input id="qr-check-length" value="6" type="tel" />
@@ -160,6 +160,7 @@
         input.addEventListener("keypress", function(event) {
           if (event.key === "Enter") {
             goCheck(input.value);
+            document.getElementById('key-check').value = ''
           }
         });
         
