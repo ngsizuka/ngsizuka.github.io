@@ -127,9 +127,9 @@
         var resultContainer = document.getElementById('qr-reader-results');
         var lastResult, countResults = 0;
         function onScanSuccess(decodedText, decodedResult) {
-            //if (decodedText !== lastResult) {
-                //++countResults;
-                //lastResult = decodedText;
+            if (decodedText !== lastResult) {
+                ++countResults;
+                lastResult = decodedText;
                 // Handle on success condition with the decoded message.
                 console.log(`Scan result ${decodedText}`, decodedResult);
                 resultContainer.innerHTML = "當前條碼：" + decodedText;
@@ -139,6 +139,7 @@
                 let checkQrMin = decodedText.substring(decodedText.length-qrMinLength, decodedText.length);
                 let qrcode = "";
                 let prodCount = 0;
+                let isCheck = false;
                 for(let i = 1; i <= 20; i++){
                     qrcode = document.getElementById('check_qr_' + i).value;
                     prodCount = parseInt(document.getElementById('check_num_' + i).value);
@@ -146,11 +147,16 @@
                     if(prodCount > 0 && checkQrMin === qrcode)
                     {
                         document.getElementById('check_num_' + i).value = prodCount-1;
+                        isCheck = true;
+                        lastResult = "";
                         alert("GET!");
                         break;
                     }
                 }
-            //}
+                if(!isCheck) {
+                    resultContainer.innerHTML = "沒有可用的！";
+                }
+            }
         }
 
         var html5QrcodeScanner = new Html5QrcodeScanner(
