@@ -115,11 +115,12 @@
     function CheckCode(checkQrCode) {
         //let qrAllLength = $("#qr-all-length").value;
         let qrMinLength = $("#qr-check-length").value;
-        alert("qrMinLength："+qrMinLength)
-        alert("checkQrCode："+checkQrCode)
+        resultContainer.innerHTML =("qrMinLength："+qrMinLength)
+        resultContainer.innerHTML =("checkQrCode："+checkQrCode)
         //if(checkQrCode.length === qrAllLength)
         //{
-            //let checkQrMin = checkQrCode.substring(qrAllLength-qrMinLength, qrAllLength);
+            let checkQrMin = checkQrCode.substring(checkQrCode.length-qrMinLength, qrAllLength);
+        resultContainer.innerHTML =("checkQrMin："+checkQrMin)
             let qrcode = "";
             let prodCount = 0;
             for(let i = 1; i <= 20; i++){
