@@ -3,7 +3,7 @@
     <title>Html-Qrcode Demo</title>
 <body>
     <div id="qr-reader" style="width:250px"></div>
-    <span>手動CHECK：</span><input id="key-check" />
+    <span>手動CHECK：</span><input id="" />
     <!--span>總長度：</span><input id="qr-all-length" value="13" type="tel" /-->
     <span>判斷末N碼：</span><input id="qr-check-length" value="6" type="tel" />
     <div id="qr-reader-results"></div>
@@ -115,8 +115,10 @@
 <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
 <script>
     function goCheck(decodedText) {
+        result.innerHTML = ("goCheck!");
         //檢查條碼
                 let qrMinLength = document.getElementById('qr-check-length').value;
+        result.innerHTML = (qrMinLength+"!");
                 let checkQrMin = decodedText.substring(decodedText.length-qrMinLength, decodedText.length);
                 let qrcode = "";
                 // let prodCount = 0;
@@ -125,6 +127,7 @@
                     qrcode = document.getElementById('check_qr_' + i).value;
                     // prodCount = parseInt(document.getElementById('check_num_' + i).value);
                     //if(qrcode.length === qrMinLength && prodCount > 0 && checkQrMin === qrcode)
+        result.innerHTML = (checkQrMin+"!"+qrcode);
                     if(checkQrMin === qrcode)
                     {
                         // document.getElementById('check_num_' + i).value = prodCount-1;
