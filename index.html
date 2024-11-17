@@ -3,7 +3,7 @@
     <title>Html-Qrcode Demo</title>
 <body>
     <div id="qr-reader" style="width:250px"></div>
-    <span>總長度：</span><input id="qr-all-length" value="13" type="tel" />
+    <!--span>總長度：</span><input id="qr-all-length" value="13" type="tel" /-->
     <span>判斷末N碼：</span><input id="qr-check-length" value="6" type="tel" />
     <div id="qr-reader-results"></div>
     <hr>
@@ -112,6 +112,18 @@
 </body>
 <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
 <script>
+    function docReady(fn) {
+        // see if DOM is already available
+        if (document.readyState === "complete"
+            || document.readyState === "interactive") {
+            // call on next available tick
+            setTimeout(fn, 1);
+        } else {
+            document.addEventListener("DOMContentLoaded", fn);
+        }
+    }
+
+    docReady(function () {
     function CheckCode(checkQrCode) {
         resultContainer.innerHTML =("checkQrCode："+checkQrCode)
         //let qrAllLength = $("#qr-all-length").value;
@@ -142,18 +154,6 @@
         //}
     }
     
-    function docReady(fn) {
-        // see if DOM is already available
-        if (document.readyState === "complete"
-            || document.readyState === "interactive") {
-            // call on next available tick
-            setTimeout(fn, 1);
-        } else {
-            document.addEventListener("DOMContentLoaded", fn);
-        }
-    }
-
-    docReady(function () {
         var resultContainer = document.getElementById('qr-reader-results');
         var lastResult, countResults = 0;
         function onScanSuccess(decodedText, decodedResult) {
