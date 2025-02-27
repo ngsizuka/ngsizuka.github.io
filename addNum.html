@@ -3,13 +3,14 @@
 <head>
     <title>加法遊戲</title>
     <style>
-        font-size: 2em;
         body {
+            font-size: 2em;
             font-family: sans-serif;
             text-align: center;
         }
-        #answer {
-            padding: 10px;
+        input, button {
+            font-size: 1em;
+            width: 300px;
         }
         #result {
             font-size: 1.5em;
@@ -18,9 +19,9 @@
     </style>
 </head>
 <body>
-    <div id="final" style="position: relative; display: none;">
+    <div id="final" style="position: relative;display: none;">
         <img src="https://i.pinimg.com/originals/97/3e/0f/973e0f80f8bae3a518dda4132ac55ca7.gif" style="width: 100%; height: 100%;">
-        <span id="finalWord" style="position: absolute; top: 180px; left: 100px; width: 300px;"></span>
+        <span id="finalWord" style="position: absolute;top: 260px;left: 0;width: 100%;text-align: center;font-size: 2em;"></span>
     </div>
     
     <div id="firstRule">
@@ -55,7 +56,7 @@
         }
         
         function generateQuestion() {
-            if(totalNum >= 0){
+            if(totalNum > 0){
                 document.getElementById("title").textContent += "-還剩 " + totalNum + " 題";
                 totalNum--;
                 let num1, num2;
