@@ -41,6 +41,7 @@
     </div>
     
     <div id="game" style="display: none;">
+        <h1 style="font-size: 1em;">經過時間：<span id="timer">00:00:00</span></h1>
         <h1 id="title" style="font-size: 1em;"></h1>
         <span id="question"></span>
         <input type="number" id="answer">
@@ -68,7 +69,7 @@
 
     <script>
         let ansArr = ["恭喜！你是第一名！！","厲害！你拿到了第二名！","太棒了！你進了前三名！","哎呀！只差一點點就能進前三名！","太可惜了！再快一點點你就進級了！"];
-        let correctAnswer = 0, isAdd = true, maxNum = 100, totalNum = 500;
+        let correctAnswer = 0, isAdd = true, maxNum = 100, totalNum = 500, seconds, minutes, hours;
 
         function key(e){
             if(e === "X"){
@@ -79,6 +80,7 @@
         }
         
         function checkSetting() {
+            seconds = 0, minutes = 0, hours = 0;
             isAdd = document.getElementById("question").checked;
             totalNum = parseInt(document.getElementById("totalNum").value);
             maxNum = parseInt(document.getElementById("sumMax").value);
@@ -124,6 +126,22 @@
             document.getElementById("answer").value = ""; // 清空答案欄位
         }
 
+        function updateTimer() {
+            seconds++;
+            if (seconds >= 60) {
+              seconds = 0;
+              minutes++;
+              if (minutes >= 60) {
+                minutes = 0;
+                hours++;
+              }
+            }
+            const formattedHours = hours.toString().padStart(2, '0');
+            const formattedMinutes = minutes.toString().padStart(2, '0');
+            const formattedSeconds = seconds.toString().padStart(2, '0');
+            document.getElementById('timer').textContent = `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
+        }
+        setInterval(updateTimer, 1000); // 每秒更新計時器
     </script>
 </body>
 </html>
