@@ -15,34 +15,13 @@
             font-size: 1.5em;
             margin-top: 20px;
         }
-
-
-        body {
-            background-color: black;
-            overflow: hidden; /* 隱藏超出視窗的煙火 */
-        }
-        .firework {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background-color: white;
-            border-radius: 50%;
-            animation: explode 2s ease-out infinite; /* 煙火爆炸動畫 */
-        }
-        @keyframes explode {
-            0% {
-                transform: scale(1);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(20);
-                opacity: 0;
-            }
-        }
     </style>
 </head>
 <body>
-    <div class="firework"></div>
+    <div id="final" style="position: relative; display: none;">
+        <img src="https://i.pinimg.com/originals/97/3e/0f/973e0f80f8bae3a518dda4132ac55ca7.gif" style="width: 100%; height: 100%;">
+        <span id="finalWord" style="position: absolute; top: 180px; left: 100px; width: 300px;"></span>
+    </div>
     
     <div id="firstRule">
         <input type="checkbox" id="add" name="items" value="add" default>
@@ -63,7 +42,7 @@
     </div>
 
     <script>
-        let ansArr = ["","","","","",""];
+        let ansArr = ["恭喜！你是第一名！！","厲害！你拿到了第二名！","太棒了！你進了前三名！","哎呀！只差一點點就能進前三名！","太可惜了！再快一點點你就進級了！"];
         let correctAnswer = 0, isAdd = true, maxNum = 100, totalNum = 500;
         
         function checkSetting() {
@@ -93,7 +72,9 @@
                     document.getElementById("question").textContent = `${num1} - ${num2} = `;
                 }
             }else{
-                createFirework();
+                document.getElementById("game").style.display = "none";
+                document.getElementById("finalWord").textContent = ansArr[Math.floor(Math.random() * ansArr.length)];
+                document.getElementById("final").style.display = "inline-block";
             }
         }
 
@@ -108,30 +89,6 @@
             document.getElementById("answer").value = ""; // 清空答案欄位
         }
 
-        function playSound() {
-            const sound = new Audio('sound.mp3');
-            sound.play();
-        }
-
-        function createFirework() {
-            const firework = document.createElement('div');
-            firework.classList.add('firework');
-        
-            // 隨機生成煙火的位置
-            firework.style.left = Math.random() * window.innerWidth + 'px';
-            firework.style.top = Math.random() * window.innerHeight + 'px';
-        
-            // 隨機生成煙火的顏色
-            const randomColor = `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`;
-            firework.style.backgroundColor = randomColor;
-        
-            document.body.appendChild(firework);
-        
-            // 在動畫結束後移除煙火元素
-            firework.addEventListener('animationend', () => {
-                firework.remove();
-            });
-        }
     </script>
 </body>
 </html>
