@@ -3,25 +3,47 @@
 <head>
     <title>加法遊戲</title>
     <style>
+        font-size: 2em;
         body {
             font-family: sans-serif;
             text-align: center;
         }
-        #question {
-            font-size: 2em;
-            margin-bottom: 20px;
-        }
         #answer {
-            font-size: 1.5em;
             padding: 10px;
         }
         #result {
             font-size: 1.5em;
             margin-top: 20px;
         }
+
+
+        body {
+            background-color: black;
+            overflow: hidden; /* 隱藏超出視窗的煙火 */
+        }
+        .firework {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: white;
+            border-radius: 50%;
+            animation: explode 2s ease-out infinite; /* 煙火爆炸動畫 */
+        }
+        @keyframes explode {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(20);
+                opacity: 0;
+            }
+        }
     </style>
 </head>
 <body>
+    <div class="firework"></div>
+    
     <div id="firstRule">
         <input type="checkbox" id="add" name="items" value="add" default>
         <label for="add">加法</label><br>
@@ -32,25 +54,30 @@
         <button onclick="checkSetting()">初始設定</button>
     </div>
     
-    <h1>加法遊戲</h1>
-    <div id="question"></div>
-    <input type="number" id="answer">
-    <button onclick="checkAnswer()">提交</button>
-    <div id="result"></div>
+    <div id="game" style="display: none;">
+        <h1 id="title">加減法遊戲</h1>
+        <span id="question"></span>
+        <input type="number" id="answer">
+        <button onclick="checkAnswer()">送出</button>
+        <div id="result"></div>
+    </div>
 
     <script>
         let ansArr = ["","","","","",""];
         let correctAnswer = 0, isAdd = true, maxNum = 100, totalNum = 500;
+        
         function checkSetting() {
             isAdd = document.getElementById("question").checked;
             totalNum = parseInt(document.getElementById("totalNum").value);
             maxNum = parseInt(document.getElementById("sumMax").value);
             document.getElementById("firstRule").style.display = "none";
+            document.getElementById("game").style.display = "";
             generateQuestion(); // 首次載入時產生題目
         }
         
         function generateQuestion() {
             if(totalNum >= 0){
+                document.getElementById("title").textContent += "-還剩 " + totalNum + " 題";
                 totalNum--;
                 let num1, num2;
                 num1 = Math.floor(Math.random() * maxNum);
@@ -58,13 +85,15 @@
                     //add 不大於 maxNum
                     num2 = Math.floor(Math.random() * (maxNum - num1));    
                     correctAnswer = num1 + num2;
-                    document.getElementById("question").textContent = `${num1} + ${num2} = ?`;
+                    document.getElementById("question").textContent = `${num1} + ${num2} = `;
                 }else{
                     //sub 不能小於 0
                     num2 = Math.floor(Math.random() * num1);    
                     correctAnswer = num1 - num2;
-                    document.getElementById("question").textContent = `${num1} - ${num2} = ?`;
+                    document.getElementById("question").textContent = `${num1} - ${num2} = `;
                 }
+            }else{
+                createFirework();
             }
         }
 
@@ -79,6 +108,30 @@
             document.getElementById("answer").value = ""; // 清空答案欄位
         }
 
+        function playSound() {
+            const sound = new Audio('sound.mp3');
+            sound.play();
+        }
+
+        function createFirework() {
+            const firework = document.createElement('div');
+            firework.classList.add('firework');
+        
+            // 隨機生成煙火的位置
+            firework.style.left = Math.random() * window.innerWidth + 'px';
+            firework.style.top = Math.random() * window.innerHeight + 'px';
+        
+            // 隨機生成煙火的顏色
+            const randomColor = `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`;
+            firework.style.backgroundColor = randomColor;
+        
+            document.body.appendChild(firework);
+        
+            // 在動畫結束後移除煙火元素
+            firework.addEventListener('animationend', () => {
+                firework.remove();
+            });
+        }
     </script>
 </body>
 </html>
