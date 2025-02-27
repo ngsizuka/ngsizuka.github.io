@@ -4,7 +4,7 @@
     <title>加法遊戲</title>
     <style>
         body {
-            font-size: 2em;
+            font-size: 3em;
             font-family: sans-serif;
             text-align: center;
         }
@@ -41,7 +41,7 @@
     </div>
     
     <div id="game" style="display: none;">
-        <h1 id="title">加減法遊戲</h1>
+        <h1 id="title" style="font-size: 1em;"></h1>
         <span id="question"></span>
         <input type="number" id="answer">
         <button onclick="checkAnswer()">送出</button>
@@ -61,7 +61,7 @@
             <button class="sudoku-key-button" onclick="key(7)">7</button>
             <button class="sudoku-key-button" onclick="key(8)">8</button>
             <button class="sudoku-key-button" onclick="key(9)">9</button>
-            <button class="sudoku-key-button" onclick="key('X')">重寫</button>
+            <button class="sudoku-key-button" onclick="key('X')" style="width: 230px;">重寫</button>
         </div>
         </div>
     </div>
@@ -90,7 +90,7 @@
         
         function generateQuestion() {
             if(totalNum > 0){
-                document.getElementById("title").textContent += "-還剩 " + totalNum + " 題";
+                document.getElementById("title").textContent = "還剩 " + totalNum + " 題";
                 totalNum--;
                 let num1, num2;
                 num1 = Math.floor(Math.random() * maxNum);
