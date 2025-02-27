@@ -19,7 +19,8 @@
     </style>
 </head>
 <body>
-    <div id="final" style="position: relative;display: none;">
+    <div id="final">
+        <button onclick="again()">再來一次</button>
         <img src="https://i.pinimg.com/originals/97/3e/0f/973e0f80f8bae3a518dda4132ac55ca7.gif" style="width: 100%; height: 100%;">
         <span id="finalWord" style="position: absolute;top: 260px;left: 0;width: 100%;text-align: center;font-size: 2em;"></span>
     </div>
@@ -45,6 +46,10 @@
     <script>
         let ansArr = ["恭喜！你是第一名！！","厲害！你拿到了第二名！","太棒了！你進了前三名！","哎呀！只差一點點就能進前三名！","太可惜了！再快一點點你就進級了！"];
         let correctAnswer = 0, isAdd = true, maxNum = 100, totalNum = 500;
+
+        function again() {
+            checkSetting();
+        }
         
         function checkSetting() {
             isAdd = document.getElementById("question").checked;
