@@ -41,11 +41,37 @@
         <input type="number" id="answer">
         <button onclick="checkAnswer()">送出</button>
         <div id="result"></div>
+
+    <div>
+        <div>
+            <button class="sudoku-key-button" onclick="key(0)">0</button>
+            <button class="sudoku-key-button" onclick="key(1)">1</button>
+            <button class="sudoku-key-button" onclick="key(2)">2</button>
+            <button class="sudoku-key-button" onclick="key(3)">3</button>
+            <button class="sudoku-key-button" onclick="key(4)">4</button>
+            <button class="sudoku-key-button" onclick="key(5)">5</button>
+        </div>
+        <div>
+            <button class="sudoku-key-button" onclick="key(6)">6</button>
+            <button class="sudoku-key-button" onclick="key(7)">7</button>
+            <button class="sudoku-key-button" onclick="key(8)">8</button>
+            <button class="sudoku-key-button" onclick="key(9)">9</button>
+            <button class="sudoku-key-button" onclick="key(X)">重寫</button>
+        </div>
+        </div>
     </div>
 
     <script>
         let ansArr = ["恭喜！你是第一名！！","厲害！你拿到了第二名！","太棒了！你進了前三名！","哎呀！只差一點點就能進前三名！","太可惜了！再快一點點你就進級了！"];
         let correctAnswer = 0, isAdd = true, maxNum = 100, totalNum = 500;
+
+        function key(e){
+            if(e === "X"){
+                document.getElementById("answer").value = ""; // 清空答案欄位
+            }else{
+                document.getElementById("answer").value = e;
+            }
+        }
         
         function checkSetting() {
             isAdd = document.getElementById("question").checked;
