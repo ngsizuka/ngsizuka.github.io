@@ -34,7 +34,7 @@
     </div>
     
     <div id="firstRule">
-        <input type="checkbox" id="add" name="items" value="add" default>
+        <input type="checkbox" id="add" name="items" value="add" checked>
         <label for="add">加法</label><br>
         <input type="checkbox" id="sub" name="items" value="sub">
         <label for="sub">減法</label><br>
@@ -84,7 +84,7 @@
         
         function checkSetting() {
             seconds = 0, minutes = 0, hours = 0;
-            isAdd = document.getElementById("question").checked;
+            isAdd = document.getElementById("add").checked;
             totalNum = parseInt(document.getElementById("totalNum").value);
             maxNum = parseInt(document.getElementById("sumMax").value);
             document.getElementById("final").style.display = "none";
@@ -98,7 +98,7 @@
                 document.getElementById("title").textContent = "還剩 " + totalNum + " 題";
                 totalNum--;
                 let num1, num2;
-                num1 = Math.floor(Math.random() * maxNum);
+                num1 = Math.floor(Math.random() * maxNum) + 1;
                 if(isAdd){
                     //add 不大於 maxNum
                     num2 = Math.floor(Math.random() * (maxNum - num1));    
